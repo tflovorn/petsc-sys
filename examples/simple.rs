@@ -1,17 +1,9 @@
-mod petsc_binding {
-    #![allow(non_upper_case_globals)]
-    #![allow(non_camel_case_types)]
-    #![allow(non_snake_case)]
-    #![allow(missing_copy_implementations)]
-    #![allow(dead_code)]
-    include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
-}
-
 extern crate libc;
+extern crate petsc_sys;
 
 use libc::{c_char, c_int};
 use std::ffi::CString;
-use petsc_binding::{PetscInitialize, PetscPrintf, PetscFinalize, PETSC_COMM_WORLD};
+use petsc_sys::{PetscInitialize, PetscPrintf, PetscFinalize, PETSC_COMM_WORLD};
 
 fn main() {
     let argv = std::env::args().collect::<Vec<String>>();
