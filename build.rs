@@ -35,6 +35,8 @@ fn main() {
     };
 
     // Tell Cargo to link the MPI libraries, as in rsmpi/build.rs.
+    // TODO - some of the MPI library linking here and MPI library path-setting
+    // below may be unnecessary.
     for dir in &mpi_lib.lib_paths {
         println!("cargo:rustc-link-search=native={}", dir.display());
     }
